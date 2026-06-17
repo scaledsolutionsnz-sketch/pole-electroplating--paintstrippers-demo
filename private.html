@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Feedback | Pole Electroplating &amp; Paintstrippers</title>
+<meta name="description" content="Share your feedback privately with Pole Electroplating & Paintstrippers, Christchurch.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="background:var(--char-900)">
+
+<header class="nav scrolled">
+  <a class="brand" href="index.html"><span class="brand-mark">P</span><span class="brand-name">Pole<small>Plating &amp; Stripping</small></span></a>
+  <div class="nav-cta"><a class="btn btn--ghost" href="index.html">Back to Site</a></div>
+</header>
+
+<div class="review-wrap">
+  <div class="review-card" style="text-align:left">
+    <div id="fbForm">
+      <div style="text-align:center">
+        <div class="brand-mark" style="margin:0 auto 16px">P</div>
+        <h1 style="text-align:center">Tell us more</h1>
+        <p style="text-align:center;color:var(--muted);margin-bottom:26px">Thanks for the honest feedback — it goes straight to Tony so we can put it right. This won't be posted publicly.</p>
+      </div>
+      <form action="https://formsubmit.co/pole.elect@gmail.com" method="POST" id="privateForm">
+        <input type="hidden" name="_subject" value="Private feedback — Pole Electroplating website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none">
+        <div class="field"><label>Name</label><input type="text" name="Name" required placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input type="email" name="Email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Your rating</label><input type="text" name="Rating" id="ratingField" readonly></div>
+        <div class="field"><label>What could we have done better?</label><textarea name="Feedback" required placeholder="Tell us what happened so we can make it right."></textarea></div>
+        <button class="btn btn--primary" type="submit" style="width:100%;justify-content:center">Send Feedback</button>
+      </form>
+    </div>
+    <div class="fb-success" id="fbSuccess">
+      <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg></div>
+      <h1 style="text-align:center">Thank you</h1>
+      <p style="text-align:center;color:var(--muted)">Your feedback's been sent through to Tony. We appreciate you taking the time, and we'll be in touch if anything needs sorting.</p>
+      <div style="text-align:center;margin-top:24px"><a class="btn btn--dark" href="index.html">Back to Home</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Pre-fill rating from URL
+  var params = new URLSearchParams(window.location.search);
+  var r = parseInt(params.get('rating'), 10);
+  var label = (r >= 1 && r <= 5) ? (r + ' star' + (r > 1 ? 's' : '')) : 'Not specified';
+  document.getElementById('ratingField').value = label;
+
+  // Submit via fetch to show inline success (no reCAPTCHA, no redirect)
+  var form = document.getElementById('privateForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var data = new FormData(form);
+    fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} })
+      .then(function(){ showSuccess(); })
+      .catch(function(){ showSuccess(); });
+  });
+  function showSuccess(){
+    document.getElementById('fbForm').style.display = 'none';
+    document.getElementById('fbSuccess').classList.add('show');
+  }
+</script>
+</body>
+</html>
