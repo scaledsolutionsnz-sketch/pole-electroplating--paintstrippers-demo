@@ -98,7 +98,7 @@ img{display:block;max-width:100%}
 .nav-toggle svg{width:28px;height:28px}
 
 /* Hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;background:var(--char-900);overflow:hidden}
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;background:var(--char-900);overflow:hidden;padding-top:110px}
 .hero-slides{position:absolute;inset:0;z-index:0}
 .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease;transform:scale(1.06)}
 .hero-slide.active{opacity:1;animation:kenburns 8s ease forwards}
@@ -108,7 +108,7 @@ img{display:block;max-width:100%}
 .hero-overlay::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(19,16,14,.6),transparent 60%)}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px 92px}
 .hero .eyebrow{margin-bottom:20px}
-.hero h1{color:#fff;font-size:clamp(3.2rem,8.5vw,7rem);max-width:14ch;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.hero h1{color:#fff;font-size:clamp(2.8rem,6.4vw,5.2rem);line-height:1.02;max-width:16ch;text-shadow:0 2px 30px rgba(0,0,0,.4)}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero-sub{color:#e3d9cd;font-size:clamp(1.05rem,2vw,1.3rem);max-width:54ch;margin:22px 0 34px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
